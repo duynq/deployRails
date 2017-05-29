@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encode: unicode
+  pool: 5
+  timeout: 5000
+  username: yurucamera
+  password: yurucamera
+
+development:
+  host: localhost
+  <<: *default
+  database: contactbook_development
+test:
+  <<: *default
+  database: contactbook_test
+production:
+  <<: *default
+  database: contactbook_production
+  username: contactbook
+  password: <%= ENV['CONTACTBOOK_DATABASE_PASSWORD'] %>
